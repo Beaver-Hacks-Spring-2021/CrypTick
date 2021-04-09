@@ -1,0 +1,10 @@
+{
+  "name": "CrypTick",
+  "description": "Cryptocurrency Market Data",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "hello_extensions.png"
+  }
+}
