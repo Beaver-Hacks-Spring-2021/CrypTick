@@ -11,6 +11,7 @@
         min-height: 600px;
         padding: 0;
         width: 320px;
+        background-color: #0000;
       }
     </style>
     <!-- Semantic UI CDN Link -->
@@ -26,7 +27,13 @@
       <a href="popup.html" class="orange item">Favorites</a>
       <a href="news.html" class="orange item">News</a>
     </div>
-
+    <div class="ui search">
+      <div class="ui icon input fluid">
+        <input class="prompt" type="text" placeholder="Search Coin" />
+        <i class="search icon"></i>
+      </div>
+      <div class="results"></div>
+    </div>
     <table
       class="ui unstackable striped sortable compact small inverted right aligned table"
     >
@@ -44,18 +51,27 @@
           <td class="left aligned">Bitcoin</td>
           <td>Approved</td>
           <td>None</td>
+          <td class="center aligned">
+            <i class="star icon link"></i>
+          </td>
         </tr>
         <tr>
           <td class="center aligned">2</td>
           <td class="left aligned">Etherium</td>
           <td>Approved</td>
           <td>None</td>
+          <td class="center aligned">
+            <i class="star icon link"></i>
+          </td>
         </tr>
         <tr>
           <td class="center aligned">3</td>
           <td class="left aligned">Litecoin</td>
           <td>Approved</td>
           <td>None</td>
+          <td class="center aligned">
+            <i class="star icon link"></i>
+          </td>
         </tr>
       </tbody>
     </table>
