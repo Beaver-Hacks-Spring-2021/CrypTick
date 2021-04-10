@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CrypTick</title>
+    <!-- Semantic UI CDN Link -->
+    <link rel="stylesheet" type="text/css" href="css/semantic.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="semantic/dist/semantic.min.js"></script>
+  </head>
+
+  <body>
+    <div class="ui three item inverted menu top attached">
+      <a href="coins.html" class="orange item">Coins</a>
+      <a href="favorites.html" class="active orange item">Favorites</a>
+      <a href="news.html" class="orange item">News</a>
+    </div>
+    <div class="ui inverted transparent segment attached">
+      <div class="ui search">
+        <div class="ui icon input fluid">
+          <input class="prompt" type="text" placeholder="Search Coin" />
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+    </div>
+
+    <table
+      class="ui unstackable striped sortable compact small inverted right aligned table attached"
+    >
+      <thead>
+        <tr class="compact table">
+          <th class="center aligned">#</th>
+          <th class="left aligned">Name</th>
+          <th>24H Change</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="center aligned">1</td>
+          <td class="left aligned">Bitcoin</td>
+          <td>Approved</td>
+          <td>None</td>
+          <td class="center aligned">
+            <i class="star icon link"></i>
+          </td>
+        </tr>
+        <tr>
+          <td class="center aligned">2</td>
+          <td class="left aligned">Etherium</td>
+          <td>Approved</td>
+          <td>None</td>
+          <td class="center aligned">
+            <i class="star icon link"></i>
+          </td>
+        </tr>
+        <tr>
+          <td class="center aligned">3</td>
+          <td class="left aligned">Litecoin</td>
+          <td>Approved</td>
+          <td>None</td>
+          <td class="center aligned">
+            <i class="star icon link"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 class="ui header orange inverted bottom attached">
+      <i class="chart line icon"></i>
+      <div class="content">CrypTick</div>
+    </h4>
+
+    <script src="popup.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  </body>
+</html>
