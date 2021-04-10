@@ -86,11 +86,16 @@ body {
 
 article,
 aside,
-footer,
 header,
 nav,
 section {
   display: block;
+}
+
+.footer {
+  display: block;
+  position: absolute;
+  bottom: 0;
 }
 
 /**
