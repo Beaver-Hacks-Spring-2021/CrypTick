@@ -11,27 +11,25 @@
         min-height: 600px;
         padding: 0;
         width: 320px;
-        background-color: #0000;
-      }
-      .logo {
-        background: url("images/icon16.png")
-        display: block;
       }
     </style>
     <!-- Semantic UI CDN Link -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
-    />
+    <link rel="stylesheet" type="text/css" href="css/semantic.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="semantic/dist/semantic.min.js"></script>
   </head>
 
   <body>
-    <div class="ui three item inverted menu">
+    <div class="ui three item inverted menu top attached">
       <a href="coins.html" class="active orange item">Coins</a>
       <a href="popup.html" class="orange item">Favorites</a>
       <a href="news.html" class="orange item">News</a>
     </div>
-    <div class="ui container">
+    <div class="ui inverted transparent segment attached">
       <div class="ui search">
         <div class="ui icon input fluid">
           <input class="prompt" type="text" placeholder="Search Coin" />
@@ -42,7 +40,7 @@
     </div>
 
     <table
-      class="ui unstackable striped sortable compact small inverted right aligned table top attached"
+      class="ui unstackable striped sortable compact small inverted right aligned table attached"
     >
       <thead>
         <tr class="compact table">
