@@ -43,3 +43,15 @@ window
       change.innerHTML = new_change;
     }
   });
+
+var btnStar = document.querySelectorAll('.star');
+
+btnStar.forEach((item) => {
+  item.addEventListener('click', (event) => {
+    if (item.style.color == 'orange') {
+      item.style.color = '#e5e5e5';
+    } else {
+      item.style.color = 'orange';
+    }
+  });
+});
