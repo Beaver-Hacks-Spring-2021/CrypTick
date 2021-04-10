@@ -44,14 +44,20 @@ window
     }
   });
 
+var favorites = []
+
 var btnStar = document.querySelectorAll('.star');
 
 btnStar.forEach((item) => {
   item.addEventListener('click', (event) => {
-    if (item.style.color == 'orange') {
-      item.style.color = '#e5e5e5';
+    item.classList.toggle('yellow');
+    
+    if (item.classList.contains('yellow')) {
+      favorites.push(item)
+      console.log(favorites)
     } else {
-      item.style.color = 'orange';
+      favorites.indexOf(item) > -1 ? favorites.splice(favorites.indexOf(item), 1) : false
+      console.log(favorites)
     }
   });
 });
