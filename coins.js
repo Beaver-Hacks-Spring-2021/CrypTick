@@ -15,34 +15,31 @@ const change2 = document.getElementById('change-2');
 
 window
   .fetch(
-    'https://data.messari.io/api/v2/assets?limit=3&fields=name,metrics/market_data/price_usd,metrics/market_data/percent_change_usd_last_24_hours'
+    'https://data.messari.io/api/v2/assets?limit=2&fields=name,metrics/market_data/price_usd,metrics/market_data/percent_change_usd_last_24_hours'
   )
   .then((res) => res.json())
   .then((messariRes) => messariRes.data)
   .then((coins) => {
-    for (let [key, value] of Object.entries(coins)) {
-      var name = document.getElementById('name-' + key);
-      var price = document.getElementById('price-' + key);
-      var change = document.getElementById('change-' + key);
 
-      new_name = coins[key]['name'];
-      new_price =
-        '$' +
-        parseFloat(coins[key]['metrics']['market_data']['price_usd']).toFixed(
-          2
-        );
-      new_change =
-        parseFloat(
-          coins[key]['metrics']['market_data'][
-            'percent_change_usd_last_24_hours'
-          ]
-        ).toFixed(2) + '%';
+    var coinDisplay = document.querySelectorAll('.coin');
 
-      name.innerHTML = new_name;
-      price.innerHTML = new_price;
-      change.innerHTML = new_change;
-    }
-  });
+    for (let [index, coin] of Array.from(coinDisplay.entries())) {
+      // Get coin's data
+
+      var name = coins[index]['name']
+      var price = '$' + parseFloat(coins[index]['metrics']['market_data']
+                ['price_usd']).toFixed(2);
+      var change = parseFloat(coins[index]['metrics']['market_data']
+                ['percent_change_usd_last_24_hours']).toFixed(2) + '%';
+
+      // Populate the HTML elements
+      coin.querySelector('.name').innerHTML = name;
+      coin.querySelector('.price').innerHTML = price;
+      coin.querySelector('.change').innerHTML = change;
+  }
+}
+  )
+
 
 var favorites = []
 
@@ -53,10 +50,10 @@ btnStar.forEach((item) => {
     item.classList.toggle('yellow');
     
     if (item.classList.contains('yellow')) {
-      favorites.push(item)
+      favorites.push(item.parentElement.parentElement)
       console.log(favorites)
     } else {
-      favorites.indexOf(item) > -1 ? favorites.splice(favorites.indexOf(item), 1) : false
+      favorites.indexOf(item.parentElement.parentElement) > -1 ? favorites.splice(favorites.indexOf(item), 1) : false
       console.log(favorites)
     }
   });
