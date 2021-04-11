@@ -55,7 +55,7 @@ window
         }
 
         priceCell = row.insertCell();
-        if (price === 'NaN%') {
+        if (price === '$NaN') {
           priceCell.innerHTML = '0';
         } else {
           priceCell.innerHTML = price;
