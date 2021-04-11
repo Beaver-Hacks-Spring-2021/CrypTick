@@ -5,6 +5,7 @@ window
   .then((res) => res.json())
   .then((messariRes) => messariRes.data)
   .then((coins) => {
+    console.log(coins);
     var coinTable = document.querySelector('.coin-data');
 
     for (let [index, coin] of coins.entries()) {
@@ -38,16 +39,23 @@ window
       nameCell.innerHTML = name;
 
       changeCell = row.insertCell();
-      changeCell.innerHTML = change;
+      // Handle null change values
+      if (change === 'NaN%') {
+        changeCell.innerHTML = '0';
+      } else {
+        changeCell.innerHTML = change;
+      }
       changeCell.classList.add('inverted');
 
-      priceCell = row.insertCell();
-      priceCell.innerHTML = price;
+      // Number color based on positive or negative 24hr change
       if (change.includes('-')) {
         changeCell.classList.add('negative');
       } else {
         changeCell.classList.add('positive');
       }
+
+      priceCell = row.insertCell();
+      priceCell.innerHTML = price;
 
       starCell = row.insertCell();
       starCell.classList.add('center');
