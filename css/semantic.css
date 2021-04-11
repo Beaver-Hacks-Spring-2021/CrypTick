@@ -26226,7 +26226,7 @@ Floated Menu / Item
 /* Positive */
 
 .ui.positive.message {
-  background-color: #FCFFF5;
+  background-color: #1B1C1D;
   color: #2C662D;
 }
 
@@ -26849,8 +26849,8 @@ Floated Menu / Item
 
 .ui.table tr.positive,
 .ui.table td.positive {
-  background: #FCFFF5 !important;
-  color: #2C662D !important;
+  background: #333333 !important;
+  color: rgb(46, 185, 46) !important;
 }
 
 /*--------------
@@ -26865,8 +26865,8 @@ Floated Menu / Item
 
 .ui.table tr.negative,
 .ui.table td.negative {
-  background: #FFF6F6 !important;
-  color: #9F3A38 !important;
+  background: #333333 !important;
+  color: red !important;
 }
 
 /*--------------
