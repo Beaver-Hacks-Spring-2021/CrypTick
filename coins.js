@@ -1,6 +1,6 @@
 window
     .fetch(
-      'https://data.messari.io/api/v2/assets?limit=300&fields=name,metrics/market_data/price_usd,metrics/market_data/percent_change_usd_last_24_hours'
+      'https://data.messari.io/api/v2/assets?limit=1000&fields=name,metrics/market_data/price_usd,metrics/market_data/percent_change_usd_last_24_hours'
     )
     .then((res) => res.json())
     .then((messariRes) => messariRes.data)
