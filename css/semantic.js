@@ -18025,6 +18025,15 @@ $.fn.tab = function(parameters) {
     initializedHistory = false,
     returnedValue
   ;
+  
+  $(".table-div")
+  .visibility({
+    once: false,
+    observeChanges: true,
+    transition: 'fade in',
+    onBottomVisible: function() {
+      console.log('hit bottom')    }
+  });
 
   $allModules
     .each(function() {
