@@ -55,7 +55,12 @@ window
         }
 
         priceCell = row.insertCell();
-        priceCell.innerHTML = price;
+        if (price === 'NaN%') {
+          priceCell.innerHTML = '0';
+        } else {
+          priceCell.innerHTML = price;
+        }
+        
 
         starCell = row.insertCell();
         starCell.classList.add('center');
