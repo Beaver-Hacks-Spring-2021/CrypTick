@@ -9,15 +9,21 @@
   </head>
 
   <body>
-    <div class="ui inverted three item menu top attached small">
+    <div class="ui inverted three item menu small">
       <div class="item">
         <i class="chart line icon"></i>
+        <span>Cryptick</span>
       </div>
       <a href="coins.html" class="orange item">Coins</a>
       <a href="#" class="active orange item">News</a>
     </div>
+    <div class="ui inverted segment">
+      <h2 class="ui orange inverted center aligned header">
+        Latest Crypto News
+      </h2>
+    </div>
     <!-- News Feed -->
-    <div class="ui container data-back"></div>
+    <div id="articles" class="ui cards"></div>
 
     <script src="news.js"></script>
   </body>

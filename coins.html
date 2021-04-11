@@ -12,22 +12,15 @@
     <div class="ui inverted three item menu top attached small">
       <div class="item">
         <i class="chart line icon"></i>
+        <span>Cryptick</span>
       </div>
       <a href="#" class="active orange item">Coins</a>
       <a href="news.html" class="orange item">News</a>
     </div>
-    <div class="ui inverted transparent segment attached">
-      <div class="ui search">
-        <div class="ui mini icon input fluid">
-          <input class="prompt" type="text" placeholder="Search Coin" />
-          <i class="search icon"></i>
-        </div>
-        <div class="results"></div>
-      </div>
-    </div>
 
+    <div class="table-div">
     <table
-      class="ui unstackable sortable very compact small inverted right aligned fixed table single line bottom attached"
+      class="cointable ui unstackable sortable very compact small inverted right aligned fixed table single line bottom attached"
     >
       <thead>
         <tr>
@@ -39,8 +32,8 @@
         </tr>
       </thead>
       <tbody class="coin-data"></tbody>
-    </table>
+      </table>
+  </div>
     <script src="coins.js"></script>
-    <script src="tablesort.js"></script>
   </body>
 </html>
