@@ -9,12 +9,11 @@
   </head>
 
   <body>
-    <div class="ui inverted four item menu top attached small">
+    <div class="ui inverted three item menu top attached small">
       <div class="item">
         <i class="chart line icon"></i>
       </div>
-      <a href="coins.html" class="active orange item">Coins</a>
-      <a id="favorites-tab" href="#" class="orange item">Favorites</a>
+      <a href="#" class="active orange item">Coins</a>
       <a href="news.html" class="orange item">News</a>
     </div>
     <div class="ui inverted transparent segment attached">
@@ -35,8 +34,10 @@
           <th class="center aligned">#</th>
           <th class="left aligned">Name</th>
           <th>24H Change</th>
-          <th>Price</th>
-          <th></th>
+          <th class = "center aligned">Price</th>
+          <th id="favorites-tab">
+            Favorite
+          </th>
         </tr>
       </thead>
       <tbody class="coin-data"></tbody>

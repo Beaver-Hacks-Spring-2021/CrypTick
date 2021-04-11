@@ -1,6 +1,6 @@
 window
   .fetch(
-    'https://data.messari.io/api/v2/assets?limit=100&fields=name,metrics/market_data/price_usd,metrics/market_data/percent_change_usd_last_24_hours'
+    'https://data.messari.io/api/v2/assets?limit=250&fields=name,metrics/market_data/price_usd,metrics/market_data/percent_change_usd_last_24_hours'
   )
   .then((res) => res.json())
   .then((messariRes) => messariRes.data)
@@ -81,20 +81,30 @@ setTimeout(function afterTwoSeconds() {
   });
 }, 500);
 
+var isStarredOnly = false;
+
 function showStarred() { 
   var coins = document.querySelectorAll('.coin');
   console.log(coins);
 
-  coins.forEach((coin) => {
-    console.log('loop is working');
-    star = coin.querySelector('.star')
-    console.log(star);
-    if (star.classList.contains('yellow')) {
-      console.log(0);
-    } else{
-      coin.style.display = "none";   
-    }
-  })
+  if (isStarredOnly) {
+    coins.forEach((coin) => {
+      coin.style.display = "table-row";
+    })
+    isStarredOnly = false;
+  } else {
+    coins.forEach((coin) => {
+      console.log('loop is working');
+      star = coin.querySelector('.star')
+      console.log(star);
+      if (star.classList.contains('yellow')) {
+        console.log(0);
+      } else{
+        coin.style.display = "none";   
+      }
+    })
+    isStarredOnly = true;
+  }
 }
 
 favorites_on = document.querySelector('#favorites-tab');

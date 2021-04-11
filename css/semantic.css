@@ -563,6 +563,8 @@ template {
 html,
 body {
   height: 100%;
+  margin: 0;
+  overflow: scroll;
 }
 
 html {
@@ -572,8 +574,7 @@ html {
 body {
   margin: 0px;
   padding: 0px;
-  overflow-x: hidden;
-  min-width: 379px;
+  min-width: 385px;
   min-height: 600px;
   background: #1b1c1e;
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -581,6 +582,10 @@ body {
   line-height: 1.4285em;
   color: rgba(0, 0, 0, 0.87);
   font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 /*******************************
@@ -26844,7 +26849,7 @@ Floated Menu / Item
 .ui.table tr.positive,
 .ui.table td.positive {
   background: #333333 !important;
-  color: #2C662D !important;
+  color: rgb(46, 185, 46) !important;
 }
 
 /*--------------
@@ -26860,7 +26865,7 @@ Floated Menu / Item
 .ui.table tr.negative,
 .ui.table td.negative {
   background: #333333 !important;
-  color: #9F3A38 !important;
+  color: red !important;
 }
 
 /*--------------
