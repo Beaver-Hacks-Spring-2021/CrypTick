@@ -6,7 +6,6 @@ window
   .then((messariRes) => messariRes.data)
   .then((coins) => {
     var coinTable = document.querySelector('.coin-data');
-    console.log(coins);
 
     for (let [index, coin] of coins.entries()) {
       // Get coin's data
@@ -26,6 +25,7 @@ window
 
       // Add a new row with the data
       var row = coinTable.insertRow();
+      row.classList.add('coin');
 
       rankCell = row.insertCell();
       rankCell.classList.add('center');
@@ -39,9 +39,15 @@ window
 
       changeCell = row.insertCell();
       changeCell.innerHTML = change;
+      changeCell.classList.add('inverted');
 
       priceCell = row.insertCell();
       priceCell.innerHTML = price;
+      if (change.includes('-')) {
+        changeCell.classList.add('negative');
+      } else {
+        changeCell.classList.add('positive');
+      }
 
       starCell = row.insertCell();
       starCell.classList.add('center');
@@ -51,11 +57,11 @@ window
       starButton.classList.add('icon');
       starButton.classList.add('link');
       starCell.appendChild(starButton);
-    }
-  });
+    }})
 
-setTimeout(function afterTwoSeconds() {
-  var favorites = [];
+var favorites = [];
+
+setTimeout(function afterTwoSeconds() { 
   var btnStar = document.querySelectorAll('.star');
 
   btnStar.forEach((item) => {
@@ -74,3 +80,22 @@ setTimeout(function afterTwoSeconds() {
     });
   });
 }, 500);
+
+function showStarred() { 
+  var coins = document.querySelectorAll('.coin');
+  console.log(coins);
+
+  coins.forEach((coin) => {
+    console.log('loop is working');
+    star = coin.querySelector('.star')
+    console.log(star);
+    if (star.classList.contains('yellow')) {
+      console.log(0);
+    } else{
+      coin.style.display = "none";   
+    }
+  })
+}
+
+favorites_on = document.querySelector('#favorites-tab');
+favorites_on.addEventListener('click', showStarred, false);
