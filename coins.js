@@ -1,60 +1,76 @@
-// Grab the elements for the first three coins
-const name0 = document.getElementById('name-0');
-const price0 = document.getElementById('price-0');
-const change0 = document.getElementById('change-0');
-
-const name1 = document.getElementById('name-1');
-const price1 = document.getElementById('price-1');
-const change1 = document.getElementById('change-1');
-
-const name2 = document.getElementById('name-2');
-const price2 = document.getElementById('price-2');
-const change2 = document.getElementById('change-2');
-
-// Get all assets
-
 window
   .fetch(
-    'https://data.messari.io/api/v2/assets?limit=2&fields=name,metrics/market_data/price_usd,metrics/market_data/percent_change_usd_last_24_hours'
+    'https://data.messari.io/api/v2/assets?limit=100&fields=name,metrics/market_data/price_usd,metrics/market_data/percent_change_usd_last_24_hours'
   )
   .then((res) => res.json())
   .then((messariRes) => messariRes.data)
   .then((coins) => {
+    var coinTable = document.querySelector('.coin-data');
+    console.log(coins);
 
-    var coinDisplay = document.querySelectorAll('.coin');
-
-    for (let [index, coin] of Array.from(coinDisplay.entries())) {
+    for (let [index, coin] of coins.entries()) {
       // Get coin's data
+      var rank = index + 1;
+      var name = coins[index]['name'];
+      var price =
+        '$' +
+        parseFloat(coins[index]['metrics']['market_data']['price_usd']).toFixed(
+          2
+        );
+      var change =
+        parseFloat(
+          coins[index]['metrics']['market_data'][
+            'percent_change_usd_last_24_hours'
+          ]
+        ).toFixed(2) + '%';
 
-      var name = coins[index]['name']
-      var price = '$' + parseFloat(coins[index]['metrics']['market_data']
-                ['price_usd']).toFixed(2);
-      var change = parseFloat(coins[index]['metrics']['market_data']
-                ['percent_change_usd_last_24_hours']).toFixed(2) + '%';
+      // Add a new row with the data
+      var row = coinTable.insertRow();
 
-      // Populate the HTML elements
-      coin.querySelector('.name').innerHTML = name;
-      coin.querySelector('.price').innerHTML = price;
-      coin.querySelector('.change').innerHTML = change;
-  }
-}
-  )
+      rankCell = row.insertCell();
+      rankCell.classList.add('center');
+      rankCell.classList.add('aligned');
+      rankCell.innerHTML = rank;
 
+      nameCell = row.insertCell();
+      nameCell.classList.add('left');
+      nameCell.classList.add('aligned');
+      nameCell.innerHTML = name;
 
-var favorites = []
+      changeCell = row.insertCell();
+      changeCell.innerHTML = change;
 
-var btnStar = document.querySelectorAll('.star');
+      priceCell = row.insertCell();
+      priceCell.innerHTML = price;
 
-btnStar.forEach((item) => {
-  item.addEventListener('click', (event) => {
-    item.classList.toggle('yellow');
-    
-    if (item.classList.contains('yellow')) {
-      favorites.push(item.parentElement.parentElement)
-      console.log(favorites)
-    } else {
-      favorites.indexOf(item.parentElement.parentElement) > -1 ? favorites.splice(favorites.indexOf(item), 1) : false
-      console.log(favorites)
+      starCell = row.insertCell();
+      starCell.classList.add('center');
+      starCell.classList.add('aligned');
+      var starButton = document.createElement('i');
+      starButton.classList.add('star');
+      starButton.classList.add('icon');
+      starButton.classList.add('link');
+      starCell.appendChild(starButton);
     }
   });
-});
+
+setTimeout(function afterTwoSeconds() {
+  var favorites = [];
+  var btnStar = document.querySelectorAll('.star');
+
+  btnStar.forEach((item) => {
+    item.addEventListener('click', (event) => {
+      item.classList.toggle('yellow');
+
+      if (item.classList.contains('yellow')) {
+        favorites.push(item.parentElement.parentElement);
+        console.log(favorites);
+      } else {
+        favorites.indexOf(item.parentElement.parentElement) > -1
+          ? favorites.splice(favorites.indexOf(item), 1)
+          : false;
+        console.log(favorites);
+      }
+    });
+  });
+}, 500);

@@ -9,14 +9,17 @@
   </head>
 
   <body>
-    <div class="ui three item inverted menu top attached">
+    <div class="ui inverted four item menu top attached small">
+      <div class="item">
+        <i class="chart line icon"></i>
+      </div>
       <a href="coins.html" class="active orange item">Coins</a>
-      <a href="favorites.html" class="range item">Favorites</a>
+      <a href="favorites.html" class="orange item">Favorites</a>
       <a href="news.html" class="orange item">News</a>
     </div>
     <div class="ui inverted transparent segment attached">
       <div class="ui search">
-        <div class="ui icon input fluid">
+        <div class="ui mini icon input fluid">
           <input class="prompt" type="text" placeholder="Search Coin" />
           <i class="search icon"></i>
         </div>
@@ -25,10 +28,10 @@
     </div>
 
     <table
-      class="ui unstackable striped sortable compact small inverted right aligned table bottom attached"
+      class="ui unstackable striped sortable very compact small inverted right aligned table single line bottom attached"
     >
       <thead>
-        <tr class="compact table">
+        <tr>
           <th class="center aligned">#</th>
           <th class="left aligned">Name</th>
           <th>24H Change</th>
@@ -36,35 +39,8 @@
           <th></th>
         </tr>
       </thead>
-      <tbody>
-        <tr class="coin">
-          <td class="rank center aligned">1</td>
-          <td id="name-0" class="name left aligned"></td>
-          <td id="change-0" class="change"></td>
-          <td id="price-0" class="price"></td>
-          <td class="center aligned">
-            <i class="star icon link"></i>
-          </td>
-        </tr>
-        <tr class="coin">
-          <td class="rank center aligned">2</td>
-          <td id="name-1" class="name left aligned"></td>
-          <td id="change-1" class="change"></td>
-          <td id="price-1" class="price"></td>
-          <td class="center aligned">
-            <i class="star icon link"></i>
-          </td>
-        </tr>
-      </tbody>
+      <tbody class="coin-data"></tbody>
     </table>
-    <div class="footer">
-      <div class="ui inverted segment">
-        <h4 class="ui orange inverted header">
-          <i class="chart line icon"></i>
-          <div class="content">CrypTick</div>
-        </h4>
-      </div>
-    </div>
     <script src="coins.js"></script>
   </body>
-  </html>
+</html>
