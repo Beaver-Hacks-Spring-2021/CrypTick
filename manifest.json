@@ -11,5 +11,8 @@
   "action": {
     "default_popup": "coins.html",
     "default_icon": "images/icon16.png"
-  }
+  },
+  "permissions": [
+    "storage"
+ ]
 }

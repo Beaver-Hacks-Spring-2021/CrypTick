@@ -65,24 +65,54 @@ window
         starButton.classList.add('icon');
         starButton.classList.add('link');
 
-
         starCell.appendChild(starButton);
       }
 })
+// chrome api get list of starred
+chrome.storage.sync.get(['starred'], function (result) {
+  savedArray = [result.starred]
+  savedArrayValues = savedArray[0]
+});
+
 
 
 var favorites = []
 
 
 setTimeout(function afterTwoSeconds() {
-  var btnStar = document.querySelectorAll('.star');
+  // chrome api save class to yellow
+  var allCoins = document.querySelectorAll('.coin')
+  allCoins.forEach((coin) => {
+    allCoinsName = coin.children[1].innerText
+    if (savedArrayValues.includes(allCoinsName)) {
+      // if true
+      star = coin.querySelector('.star');
+      star.classList.toggle('yellow');
+      // chrome api save class to yellow   
+    };
+  });
 
+  var btnStar = document.querySelectorAll('.star');
   btnStar.forEach((item) => {
     item.addEventListener('click', (event) => {
       item.classList.toggle('yellow');
+      // chrome storage
+      var coins = document.querySelectorAll('.coin');
+      let starred = [];
+      coins.forEach((coin) => {
+        coinName = coin.children[1].outerText
+        star = coin.querySelector('.star');
+        if (star.classList.contains('yellow')) {
+          starred.push(coinName)
+        };
+      });
+      // chrome api
+      chrome.storage.sync.set({ "starred": starred }, function () {
+      });
     });
   });
-}, 2000);
+  //changed to 500 from 2000 to make the saved stars appear fluid
+}, 500);
 
 
 
