@@ -83,13 +83,17 @@ setTimeout(function afterTwoSeconds() {
   // chrome api save class to yellow
   var allCoins = document.querySelectorAll('.coin')
   allCoins.forEach((coin) => {
-    allCoinsName = coin.children[1].innerText
-    if (savedArrayValues.includes(allCoinsName)) {
-      // if true
-      star = coin.querySelector('.star');
-      star.classList.toggle('yellow');
-      // chrome api save class to yellow   
-    };
+    let allCoinsName = coin.children[1].innerText
+    // if there is something in savedArrayValues
+    if (typeof savedArrayValues === 'undefined') {
+    } else {
+        if (savedArrayValues.includes(allCoinsName)) {
+        // if true
+        star = coin.querySelector('.star');
+        star.classList.toggle('yellow');
+        // chrome api save class to yellow   
+      };
+    }    
   });
 
   var btnStar = document.querySelectorAll('.star');
