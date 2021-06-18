@@ -68,78 +68,80 @@ window
         starCell.appendChild(starButton);
       }
 })
-
-.then((getStarred) => {
-  function afterTwoSeconds() {
-    // chrome api save class to yellow
-    var allCoins = document.querySelectorAll('.coin')
-    allCoins.forEach((coin) => {
-      let allCoinsName = coin.children[1].innerText
-      // if there is something in savedArrayValues
-      if (typeof savedArrayValues === 'undefined') {
-      } else {
-          if (savedArrayValues.includes(allCoinsName)) {
-          // if true
-          star = coin.querySelector('.star');
-          star.classList.toggle('yellow');
-          // chrome api save class to yellow   
-        };
-      }        
-    });
-  
-    var btnStar = document.querySelectorAll('.star');
-    btnStar.forEach((item) => {
-      item.addEventListener('click', (event) => {
-        item.classList.toggle('yellow');
-        // chrome storage
-        var coins = document.querySelectorAll('.coin');
-        let starred = [];
-        coins.forEach((coin) => {
-          coinName = coin.children[1].outerText
-          star = coin.querySelector('.star');
-          if (star.classList.contains('yellow')) {
-            starred.push(coinName)
-          };
-        });
-        // chrome api
-        chrome.storage.sync.set({"starred": starred }, function () {
-        });
-      });
-    });
-    //changed to 500 from 2000 to make the saved stars appear fluid
-  };
-      var favorites = []
-  var isStarredOnly = false;
-
-  function showStarred() {
-    var coins = document.querySelectorAll('.coin');
-
-    if (isStarredOnly) {
-      coins.forEach((coin) => {
-        coin.style.display = 'table-row';
-      });
-      isStarredOnly = false;
-    } else {
-      coins.forEach((coin) => {
-        star = coin.querySelector('.star');
-
-        if (star.classList.contains('yellow')) {
-        } else {
-          coin.style.display = 'none';
-        }
-      });
-      isStarredOnly = true;
-    }
-  }
-
-  favorites_on = document.querySelector('#favorites-tab');
-  favorites_on.addEventListener('click', showStarred, false);
-});
-
-
-// chrome api get list of starred - no delay
+// chrome api get list of starred
 chrome.storage.sync.get(['starred'], function (result) {
-  savedArray = [1]
   savedArray = [result.starred]
   savedArrayValues = savedArray[0]
 });
+
+
+
+var favorites = []
+
+
+setTimeout(function afterTwoSeconds() {
+  // chrome api save class to yellow
+  var allCoins = document.querySelectorAll('.coin')
+  allCoins.forEach((coin) => {
+    let allCoinsName = coin.children[1].innerText
+    // if there is something in savedArrayValues
+    if (typeof savedArrayValues === 'undefined') {
+    } else {
+        if (savedArrayValues.includes(allCoinsName)) {
+        // if true
+        star = coin.querySelector('.star');
+        star.classList.toggle('yellow');
+        // chrome api save class to yellow   
+      };
+    }    
+  });
+
+  var btnStar = document.querySelectorAll('.star');
+  btnStar.forEach((item) => {
+    item.addEventListener('click', (event) => {
+      item.classList.toggle('yellow');
+      // chrome storage
+      var coins = document.querySelectorAll('.coin');
+      let starred = [];
+      coins.forEach((coin) => {
+        coinName = coin.children[1].outerText
+        star = coin.querySelector('.star');
+        if (star.classList.contains('yellow')) {
+          starred.push(coinName)
+        };
+      });
+      // chrome api
+      chrome.storage.sync.set({ "starred": starred }, function () {
+      });
+    });
+  });
+  //changed to 500 from 2000 to make the saved stars appear fluid
+}, 500);
+
+
+
+var isStarredOnly = false;
+
+function showStarred() {
+  var coins = document.querySelectorAll('.coin');
+
+  if (isStarredOnly) {
+    coins.forEach((coin) => {
+      coin.style.display = 'table-row';
+    });
+    isStarredOnly = false;
+  } else {
+    coins.forEach((coin) => {
+      star = coin.querySelector('.star');
+
+      if (star.classList.contains('yellow')) {
+      } else {
+        coin.style.display = 'none';
+      }
+    });
+    isStarredOnly = true;
+  }
+}
+
+favorites_on = document.querySelector('#favorites-tab');
+favorites_on.addEventListener('click', showStarred, false);
